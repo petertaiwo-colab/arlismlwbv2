@@ -145,11 +145,11 @@ REGISTER_REDIRECT = 'login'
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'login'
 
-
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = '587'
+#smtp cred... hidden
+EMAIL_HOST = ''
+EMAIL_PORT = ''
 EMAIL_HOST_USER = 'peter.pstaiwo@gmail.com'
-EMAIL_HOST_PASSWORD = 'dxnmyezotscxkpvb'
+EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = True
 
 
