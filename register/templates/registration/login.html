@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+
+{% block databodytitle %}
+<h3>Login...</h3>  
+<p></p>
+<!-- <div class="search-wrapper"> -->
+<form method="POST" class="form-group">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <p>Don't have an account? Create one <a href="/register">here</a></p>
+    <button type="submit" class="btn btn-success ml-2">Login</button>
+</form>
+<!-- </div> -->
+{% endblock %}
+
+
+
+{% block sidebody %}
+<pre>
+
+<h4>
+Welcome!
+</h4>  
+</pre>
+
+
+{% endblock %}
+
+{% block codebody %}
+<center>
+  <h3>Performance Metrics</h3>
+</center>
+<pre>
+
+  
+
+      
+</pre>
+{% endblock %}
+
+
+
+  

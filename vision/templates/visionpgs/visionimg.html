@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+
+{% block topbody %}
+<center>
+  <h1>Multi-platform ML Workbench</h1>
+</center>
+
+  <h2>Vision AI</h2>
+  <!-- <h3>Image Location: <span style="color:blue;font-size:26px;font-weight:bold">{{dtsloc}}</span> -->
+  <pre> ------</pre> 
+    
+  </h3>
+  <div class="search-wrapper">
+    <form action="{% url 'imageai' %}" method="POST">
+      {% csrf_token %}
+      <button id="search-site" name="task" value="train">Train</button> 
+      <button id="dummy-button"></button> 
+      <button id="search-site" name="task" value="image">Image</button> 
+      <button id="dummy-button"></button>
+      <button id="search-site" name="task" value="video">Video</button> 
+      <button id="dummy-button"></button>
+      <button id="search-site" name="task" value="cam">Live Cam</button> 
+    </form>
+  </div>
+
+
+{% endblock %}
+{% block databodytitle %}
+<div class="search-wrapper">
+    <form action="{% url 'upldimg' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="" class="form-label">Select image files</label>
+        <input type="file" multiple name="uploadfiles" class="btn btn-secondary">     
+        <button type="submit" class="btn btn-primary">Upload images</button>
+    </form>
+    <pre>        </pre>
+    <form action="{% url 'visionjob' %}" method="POST">
+      {% csrf_token %}
+      <select class="btn btn-secondary" name="task">
+        <option value="select">*Select Task</option>
+        <option value="detobj">Detect Object</option>
+        <option value="detpers">Detect Persons</option>
+        <option value="classimg">Classify Image</option>
+      </select>
+      <label for="" class="form-label">with</label>
+      <select class="btn btn-secondary" name="pltfm">
+        <option value="select">*Select Platform</option>
+        <option value="rekognition">Rekognition</option>
+        <option value="azure">Azure</option>
+        <option value="yolo">YOLO</option>
+      </select>          
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+<h3>------</h3>  
+
+{% endblock %}
+
+{% block databody %}
+{% include df %}
+{% endblock %}
+
+
+
+{% block sidebody %}
+  <h5>View
+  Images</h5>
+  <form action="{% url 'imgscroll' %}" method="POST">
+    {% csrf_token %}
+    <button name="scroll" value="up" class="btn btn-primary"><pre> <  </pre></button>
+    <button name="scroll" value="down" class="btn btn-primary"><pre>  > </pre></button>
+  </form>
+  <pre> -----</pre>
+  <a href="{% url 'perfpltimg' %}" target="_blank" > View Performance plots </a>
+  <pre> -----</pre>
+  <a href="{% url 'stdperftestpers' %}" > Standard Performance Test - Persons </a>
+{% endblock %}
+
+{% block codebody %}
+<center><h2>Performance</h2></center> 
+<br>       
+<a href="{% url 'perfpltimg' %}" target="_blank" > <img src="{% url 'perfpltimg' %}" width="320" height="300"></a>
+<pre> </pre>
+<a href="{% url 'perfpltimg2' %}" target="_blank" > <img src="{% url 'perfpltimg2' %}" width="320" height="300"></a>
+{% endblock %}

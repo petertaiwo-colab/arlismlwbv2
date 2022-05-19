@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+
+{% block topbody %}
+<center>
+  <h1>Multi-platform ML Workbench</h1>
+</center>
+
+  <h1>Dim1 <=> Basic AI</h1>
+  <h3>Dataset Location: <span style="color:blue;font-size:26px;font-weight:bold">{{dtsloc}}</span>
+    &nbsp;Number of items in dataset : <span style="color:blue;font-weight:bold">{{numitems}}</span> 
+    
+  </h3>
+
+<div class="search-wrapper">
+  <form action="{% url 'trainmdl' %}" method="POST" target="_blank">
+    {% csrf_token %}
+    <button id="search-site">Train A Model</button> with
+    <select id="search-site" name="pltfm">
+      <option value="local">Local(Jupyter NB)</option>
+      <option value="aws">AWS(Sagemaker)</option>
+      <option value="gcp">GCP(Jupyter NB)</option>
+      <option value="Google">Google Colab</option>
+    </select>   
+  </form>
+</div>
+{% endblock %}
+{% block databodytitle %}
+<h3>------</h3>  
+
+{% endblock %}
+
+{% block databody %}
+<h3>Local Machine Type: <span style="color:rgb(28, 28, 100);font-weight:bold">{{lclvmtype}}</span>
+  <br>Local Jupyter Notebook Setup Time: <span style="color:rgb(165, 41, 41);font-weight:bold">{{lclsetuptime}}</span>
+  <br>Local Jupyter Notebook URL: <span style="color:rgb(28, 28, 100);font-weight:bold">{{lclinsturl|truncatechars:70}}<a href="{% url 'copyurl' whcnb='lclnb'%}">copy url </a></span>
+</h3> 
+<h3>------</h3> 
+<h3>Sagemaker VM Type: <span style="color:rgb(28, 28, 100);font-weight:bold">{{sgmkvmtype}}</span>
+  <br>Sagemaker Instance Setup Time: <span style="color:rgb(165, 41, 41);font-weight:bold">{{sgmksetuptime}}</span>
+  <br>Sagemaker Instance URL: <span style="color:rgb(28, 28, 100);font-weight:bold;word-break:break-all">{{sgmkinsturl|truncatechars:100}}<a href="{% url 'copyurl' whcnb='sgmk'%}">copy url </a></span>
+</h3>   
+
+
+{% endblock %}
+
+
+
+{% block sidebody %}
+<pre>
+
+<h2>-----
+</h2>  
+</pre>
+
+
+{% endblock %}
+

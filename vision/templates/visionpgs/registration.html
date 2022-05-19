@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+
+{% block topbody %}
+Register
+{% endblock %}
+
+{% block databodytitle %}
+<h3>Register...</h3>  
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button id="dummy-button">Register</button>
+</form>
+
+{% endblock %}
+
+
+
+{% block sidebody %}
+<pre>
+
+<h2>Default 
+    Page ----
+    Welcome
+</h2>  
+</pre>
+
+
+{% endblock %}
+
+{% block codebody %}
+<center>
+  <h2>Codes</h2>
+</center>
+<pre>
+
+        192.168.1.157 - - [11/Nov/2020 14:46:03] "GET / HTTP/1.1" 200 -
+        192.168.1.157 - - [11/Nov/2020 14:46:03] "GET /static/css/style.css HTTP/1.1" 200 -
+        192.168.1.157 - - [11/Nov/2020 14:46:05] "GET / HTTP/1.1" 200 -                192.168.1.157 - - [11/Nov/2020 14:42:31] "GET / HTTP/1.1" 200 -
+        192.168.1.157 - - [11/Nov/2020 14:42:33] "GET / HTTP/1.1" 200 -
+
+      
+</pre>
+{% endblock %}

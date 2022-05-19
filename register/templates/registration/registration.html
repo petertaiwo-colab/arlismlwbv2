@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+
+{% block topbody %}
+{% if not passres == '1' %}
+{% if not domain == "morgan.edu" %}
+Register
+<div class="search-wrapper">
+  <form action="{% url 'regemail' %}" method="POST">
+    {% csrf_token %}
+    <input id="search-input" placeholder="Enter your email..." name="useremail" />    
+    <button id="search-site">Submit</button>
+  </form>  
+</div>
+
+<p> {{ error }} </p>
+{% else %}
+A passcode has been sent to {{email}}
+<div class="search-wrapper">
+  <form action="{% url 'codecheck' %}" method="POST">
+    {% csrf_token %}
+    <input id="search-input" placeholder="Enter passcode here..." name="passcode" />    
+    <button id="search-site">Submit</button>
+  </form>  
+</div>
+{% endif %}
+{% else %}
+
+Authorization successful with {{email}}
+
+Please create a username and password for your account
+
+{% endif %}
+
+{% endblock %}
+
+{% block databodytitle %}
+{% if passres == '1'  %}
+<h3>Register...</h3>  
+<div class="search-wrapper">
+<form method="POST">
+  {% csrf_token %}
+    {{ form }}
+    <button type="submit" id="search-site">Register</button>
+</form>
+</div>
+{% endif %}
+{% endblock %}
+
+
+
+{% block sidebody %}
+<pre>
+
+<h4>
+Welcome!
+</h4>  
+</pre>
+
+
+{% endblock %}
+
+{% block codebody %}
+<center>
+  <h3>Performance Metrics</h3>
+</center>
+<pre>
+
+  
+
+      
+</pre>
+{% endblock %}

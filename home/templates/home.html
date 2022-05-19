@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+
+{% block topbody %}
+<center>
+  <h1>Multi-platform ML Workbench</h1>
+</center>
+<!-- <pre>
+  <h1>Home <=> Data Search</h1>
+</pre> -->
+<div class="search-wrapper">
+  <!-- <form action="{% url 'dtsearchrs' %}" method="POST">
+    {% csrf_token %}
+    <input id="search-input" placeholder="Search dataset keywords..." name="searchkey" />
+    <select id="search-site" name="dtsite">
+      <option value="Kaggle">Kaggle</option>
+      <option value="Data.gov">Data.gov</option>
+      <option value="UCI">UCI</option>
+      <option value="GooglePD">GooglePD</option>
+    </select>
+    <button id="search-site">Search</button>
+    <button id="dummy-button"></button>
+  </form> -->
+  <!-- <form action="{% url 'dtdload' %}" method="POST">
+    {% csrf_token %}
+    <select id="search-site" name="dtsnum">
+      <option value="Select-Dataset">Dataset #</option>
+      {% for item in '01234567890123456789' %}
+      <option value='{{ forloop.counter }}'>{{ forloop.counter }}</option>
+      {% endfor %}
+      <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option> -->
+    <!-- </select>
+    <button id="search-site">Download</button>
+  </form> -->
+</div>
+{% endblock %}
+{% block databodytitle %}
+<h3>Welcome!</h3>  
+
+{% endblock %}
+
+
+
+{% block sidebody %}
+<pre>
+
+------- 
+</pre>
+
+
+{% endblock %}
+
+{% block codebody %}
+<center>
+  <h2>Performance Metrics</h2>
+</center>
+<pre>
+
+        
+
+      
+</pre>
+{% endblock %}
+
+
+<!-- <html>
+  <head>
+    <title>Video Live Stream</title>
+  </head>
+  <body>
+    <h1>Video Live Stream</h1>
+    <img src="{% url 'video_feed' %}">
+    <img src="{% url 'webcam_feed' %}">
+    <img src="{% url 'mask_feed' %}">
+	<img src="{% url 'livecam_feed' %}">
+  </body>
+</html> -->

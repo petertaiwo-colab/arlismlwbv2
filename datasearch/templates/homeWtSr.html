@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+
+{% block topbody %}
+<center>
+  <h1>Multi-platform ML Workbench</h1>
+</center>
+<pre>
+  <h1>Home <=> Data Search</h1>
+</pre>
+<div class="search-wrapper">
+  <form action="{% url 'dtsearchrs' %}" method="POST">
+    {% csrf_token %}
+    <input id="search-input" placeholder="Search dataset keywords..." name="searchkey" />
+    <select id="search-site" name="dtsite">
+      <option value="Kaggle">Kaggle</option>
+      <option value="Data.gov">Data.gov</option>
+      <option value="UCI">UCI</option>
+      <option value="GooglePD">GooglePD</option>
+    </select>
+    <button id="search-site">Search</button>
+    <button id="dummy-button"></button>
+  </form>
+  <form action="{% url 'dtdload' %}" method="POST">
+    {% csrf_token %}
+    <select id="search-site" name="dtsnum">
+      <option value="Select-Dataset">Dataset #</option>
+      {% for item in '01234567890123456789' %}
+      <option value='{{ forloop.counter }}'>{{ forloop.counter }}</option>
+      {% endfor %}
+      <!-- <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option> -->
+    </select>
+    <button id="search-site">Download</button>
+  </form>
+</div>
+{% endblock %}
+{% block databodytitle %}
+<h3>Federated search dataset sources:
+  <span style="color:blue;font-weight:bold">{{dtsite}}</span>
+  <br>Search keywords entered: <span style="color:blue;font-weight:bold">{{searchkey}}</span>
+  <br><span style="color:red;font-weight:bold">{{lensritems}}</span>&nbsp;search result(s) found 
+</h3>    
+
+{% endblock %}
+
+{% block databody %}
+<div id="s-iframe">
+
+  {% include srtable %}
+
+</div>
+{% endblock %}
+
+
+{% block sidebody %}
+<!-- <pre> -->
+........
+<!-- <h2>Preview 
+  Dataset</h2>  
+</pre> -->
+<!-- <form action="{% url 'dspfrm' dspwht='imgset' %}" method="POST">
+  {% csrf_token %}
+  <select id="search-site" name="lbprv">
+    <option value="all">All Labels</option>
+    {% for item in labels %}
+    <option value='{{ item }}'>{{ item }}</option>
+    {% endfor %}
+  </select>
+  <button id="search-site" name="scroll" value="up"><</button>
+  <button id="search-site" name="scroll" value="down">></button>
+</form> -->
+
+{% endblock %}
+
+{% block codebody %}
+<center>
+  <h3>Performance Metrics</h3>
+</center>
+<pre>
+
+  
+
+      
+</pre>
+{% endblock %}

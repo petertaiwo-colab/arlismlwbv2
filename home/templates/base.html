@@ -1,0 +1,100 @@
+{% load static %}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <title>MSU Cloud AI/ML</title>
+        
+    <link rel= "stylesheet" type= "text/css" href= "{% static '/css/style.css' %}">
+</head>
+
+<body>
+{% if user.is_authenticated %}
+<div class="container-fluid">
+    <p>User: {{request.user.username}} <a href="{% url 'logout' %}">Logout</a></p>
+</div>
+{% endif %}
+<div class="header">
+<div class="row text-center">
+    <div class="col-md-1">
+        <img class="img-fluid" src="{% static '/images/msulogo.png' %}" width="150" height="100" style='float: left;'/>
+    </div>
+    <div class="col-md-10">
+        <h2 class="text-justify">Data Engineering and Predictive Analytics Research Lab  |  Cloud AI/ML Workbench </h2>
+                
+
+    </div>
+    <div class="col-md-1">
+        <img class="img-fluid" src= "{% static '/images/arlislogo.PNG' %}" width="230" height="50" style='float: right;'/>
+    </div> 
+</div>
+</div>    
+<div class="wrapper">
+
+    <div class="sidebar">
+        <header>AI/ML Tasks</header>
+        <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'dtsethome' %}">Datasets</a></li>
+            <!-- <li><a href="{% url 'dim1home' %}">Dim1</a></li> -->
+            <li><a href="{% url 'visionhome' %}">Vision </a></li>
+            <!-- <li><a href="#step2">Speech </a></li> -->
+            <li><a href="#step3">NLP</a></li>
+            <li><a href="#step4">Train</a></li>            
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            
+        </ul>           
+    </div>
+
+    <div class="main-content">
+    {% block mainbody %}         
+        <div class="top-content">
+            {% block topbody %}
+            <center><h2>Multi-platform ML Workbench</h2></center> 
+            {% endblock %}
+        </div>
+        <div class="down-content">
+            <div class="data-window">
+                {% block databodytitle %}
+                <pre>                
+                    Data Window : ----                
+                </pre>
+                {% endblock %}
+                {% block databody %}
+                <pre>
+
+                    
+                
+                           <iframe class="frame" src="http://time.is" width="600" height="400"></iframe>
+                
+                </pre>
+                {% endblock %}
+            </div>
+            <div class="side-content">
+                {% block sidebody %}{% endblock %}
+            </div>            
+        </div>
+
+    {% endblock %}
+    </div>
+
+    <div class="code-bar">
+    {% block codebody %}
+        <center><h2>Performance</h2></center>        
+        <img src="{% url 'livegraph1' %}" width="320" height="300">
+    {% endblock %}
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+
+<!-- <a href="startinst">Create Sagemaker notebook instance</a><br><br> -->
